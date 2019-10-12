@@ -7,10 +7,12 @@ import Hero from "./hero";
 import Wall from "./wall";
 
 import level1 from "./levels/level1";
+import level2 from "./levels/level2";
 
-const levels = [
-    level1,
-];
+const levels = {
+    1: level1,
+    2: level2,
+};
 
 export default class App {
     pixiApp = null;
@@ -57,25 +59,18 @@ export default class App {
 
         this.currentLevelNumber = levelNumber;
 
-        const level = levels[levelNumber - 1];
+        const level = levels[levelNumber];
 
         for (let x = 0; x < columnsCount; x++){
             for (let y = 0; y < rowsCount; y++){
-                const levelObject = level.find(levelObject => levelObject.x === x && levelObject.y === y);
+                const levelObject = level[y][x];
 
-                if (!levelObject){
+                if (levelObject === 1){
                     this._instantiate(Wall, x, y);
-                    continue;
-                }
 
-                if (levelObject.Obj === null){
-                    continue;
-                }
+                } else if (levelObject === 2){
+                    this.hero = this._instantiate(Hero, x, y);
 
-                const object = this._instantiate(levelObject.Obj, levelObject.x, levelObject.y);
-
-                if (levelObject.Obj === Hero){
-                    this.hero = object;
                 }
             }
         }
