@@ -2,8 +2,6 @@ import * as PIXI from "pixi.js";
 
 import { cellDimension, columnsCount, rowsCount } from "./config";
 
-// import WelcomeScene from "./scenes/WelcomeScene";
-
 export default class App extends PIXI.Application {
     currentScene = null;
 
