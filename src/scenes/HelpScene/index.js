@@ -18,6 +18,10 @@ export default class HelpScene extends BaseScene {
         this.arrowsText.x = 25;
         this.arrowsText.y = 150;
 
+        this.restartText = new PIXI.Text('Для перезапуска уровня нажми r', regularStyles);
+        this.restartText.x = 25;
+        this.restartText.y = 200;
+
         this.helpText = new PIXI.Text('Твоя задача, доставить все "пролемы" до целей, так Виталя может спать спокойно и заниматься своими делами', regularStyles);
         this.helpText.x = 25;
         this.helpText.y = 250;
@@ -29,6 +33,7 @@ export default class HelpScene extends BaseScene {
 
         this.app.stage.addChild(this.titleText);
         this.app.stage.addChild(this.arrowsText);
+        this.app.stage.addChild(this.restartText);
         this.app.stage.addChild(this.enterText);
         this.app.stage.addChild(this.helpText);
     }
@@ -36,6 +41,7 @@ export default class HelpScene extends BaseScene {
     unload() {
         this.app.stage.removeChild(this.titleText);
         this.app.stage.removeChild(this.arrowsText);
+        this.app.stage.removeChild(this.restartText);
         this.app.stage.removeChild(this.enterText);
         this.app.stage.removeChild(this.helpText);
 
