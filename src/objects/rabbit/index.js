@@ -9,7 +9,7 @@ class Rabbit extends MovableObject {
         const texture = PIXI.Texture.from(rabbitImage);
         super(texture, x, y);
 
-        this.zIndex = 100;
+        this.zIndex = 200;
     }
 }
 

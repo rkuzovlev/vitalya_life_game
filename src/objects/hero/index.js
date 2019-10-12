@@ -9,7 +9,7 @@ class Hero extends MovableObject {
         const texture = PIXI.Texture.from(heroImage);
         super(texture, x, y);
 
-        this.zIndex = 100;
+        this.zIndex = 200;
     }
 }
 

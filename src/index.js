@@ -4,6 +4,6 @@ import App from './App';
 
 const app = new App("root");
 
-app.loadLevel(2);
+app.loadLevel(1);
 
 window.app = app;

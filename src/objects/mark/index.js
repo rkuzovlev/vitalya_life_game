@@ -9,7 +9,7 @@ class Mark extends BaseObject {
         const texture = PIXI.Texture.from(markImage);
         super(texture, x, y);
 
-        this.zIndex = 200;
+        this.zIndex = 100;
     }
 }
 

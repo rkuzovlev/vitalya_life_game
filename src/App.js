@@ -57,5 +57,15 @@ export default class App extends PIXI.Application {
             this.levelController.checkMovement(DIRECTIONS.RIGHT);
 
         }
+
+        if (this.levelController.isLevelCompleted()){
+            const nextLevel = this.currentLevelNumber + 1;
+
+            if (LEVELS[nextLevel]){
+                this.loadLevel(nextLevel);
+            } else {
+                console.log('You won!!!!');
+            }
+        }
     }
 }
