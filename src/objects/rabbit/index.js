@@ -7,7 +7,7 @@ import rabbitImage from './rabbit.png';
 class Rabbit extends BaseObject {
     constructor(x, y) {
         const texture = PIXI.Texture.from(rabbitImage);
-        super(texture, x, y, 100);
+        super(texture, x, y);
 
         this.zIndex = 100;
     }

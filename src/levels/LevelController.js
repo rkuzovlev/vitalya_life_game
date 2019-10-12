@@ -28,7 +28,7 @@ class LevelController {
         this.app = app;
     }
 
-    clearLevel(){
+    _clearLevel(){
         this.levelObjects.forEach(row => {
             row.forEach(object => {
                 this.app.stage.removeChild(object);
@@ -60,7 +60,7 @@ class LevelController {
     }
 
     loadLevel(level){
-        this.clearLevel();
+        this._clearLevel();
 
         for (let y = 0; y < rowsCount; y++){
             for (let x = 0; x < columnsCount; x++){

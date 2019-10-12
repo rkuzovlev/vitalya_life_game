@@ -7,7 +7,7 @@ import heroImage from './hero.png';
 class Hero extends BaseObject {
     constructor(x, y) {
         const texture = PIXI.Texture.from(heroImage);
-        super(texture, x, y, 100);
+        super(texture, x, y);
 
         this.zIndex = 100;
     }

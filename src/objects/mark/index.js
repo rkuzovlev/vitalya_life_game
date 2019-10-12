@@ -7,7 +7,7 @@ import markImage from './mark.png';
 class Mark extends BaseObject {
     constructor(x, y) {
         const texture = PIXI.Texture.from(markImage);
-        super(texture, x, y, 200);
+        super(texture, x, y);
 
         this.zIndex = 200;
     }
