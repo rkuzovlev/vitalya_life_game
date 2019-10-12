@@ -1,9 +1,13 @@
+import * as PIXI from "pixi.js";
+
 import BaseScene from "../BaseScene";
 
 import WonScene from "../WonScene";
 
 import Road from "./road";
 import LevelController, { DIRECTIONS } from "./levels/LevelController";
+
+import regularStyles from "../../texts/regular";
 
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
@@ -26,11 +30,19 @@ export default class GameScene extends BaseScene {
 
         this.levelController = new LevelController(this.app);
 
+        this.levelText = new PIXI.Text("", regularStyles);
+        this.levelText.x = 25;
+        this.levelText.y = 25;
+        this.levelText.zIndex = 100;
+
+        this.app.stage.addChild(this.levelText);
+
         this.loadLevel(1);
     }
 
     unload(){
         this.app.stage.removeChild(this.road);
+        this.app.stage.removeChild(this.levelText);
 
         this.levelController._clearLevel();
 
@@ -39,6 +51,8 @@ export default class GameScene extends BaseScene {
 
     loadLevel(levelNumber){
         this.currentLevelNumber = levelNumber;
+
+        this.levelText.text = "Level " + levelNumber;
 
         this.levelController.loadLevel(LEVELS[levelNumber]);
     }
