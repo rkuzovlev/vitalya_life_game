@@ -1,10 +1,15 @@
+import * as PIXI from "pixi.js";
+
 import BaseObject from '../BaseObject';
 
 import markImage from './mark.png';
 
 class Mark extends BaseObject {
     constructor(x, y) {
-        super(markImage, x, y, 200);
+        const texture = PIXI.Texture.from(markImage);
+        super(texture, x, y, 200);
+
+        this.zIndex = 200;
     }
 }
 

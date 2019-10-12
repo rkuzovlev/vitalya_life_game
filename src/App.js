@@ -38,7 +38,7 @@ export default class App {
         this.pixiApp.stage.sortableChildren = true;
 
         const road = new Road(this.pixiApp);
-        this.pixiApp.stage.addChild(road.sprite);
+        this.pixiApp.stage.addChild(road);
 
         document.addEventListener('keydown', this.onKeyDown);
     }
@@ -48,18 +48,28 @@ export default class App {
     }
 
     clearLevel(){
-        this.levelObjects.forEach(object => {
-            this.pixiApp.stage.removeChild(object.sprite);
+        this.levelObjects.forEach(row => {
+            row.forEach(object => {
+                this.pixiApp.stage.removeChild(object);
+            });
         });
+
+
         this.levelObjects = [];
+        for (let y = 0; y < rowsCount; y++){
+            this.levelObjects[y] = [];
+            for (let x = 0; x < columnsCount; x++){
+                this.levelObjects[y][x] = null;
+            }
+        }
         this.hero = null;
     }
 
     _instantiate(Obj, x, y){
         const object = new Obj(x, y);
 
-        this.levelObjects.push(object);
-        this.pixiApp.stage.addChild(object.sprite);
+        this.levelObjects[y][x] = object;
+        this.pixiApp.stage.addChild(object);
 
         if (Obj === Hero){
             this.hero = object;
@@ -75,8 +85,8 @@ export default class App {
 
         const level = levels[levelNumber];
 
-        for (let x = 0; x < columnsCount; x++){
-            for (let y = 0; y < rowsCount; y++){
+        for (let y = 0; y < rowsCount; y++){
+            for (let x = 0; x < columnsCount; x++){
                 const levelObject = levelObjectMapping[level[y][x]];
 
                 if (levelObject){

@@ -1,10 +1,15 @@
+import * as PIXI from "pixi.js";
+
 import BaseObject from '../BaseObject';
 
 import wallImage from './wall.png';
 
 class Wall extends BaseObject {
     constructor(x, y) {
-        super(wallImage, x, y, 0);
+        const texture = PIXI.Texture.from(wallImage);
+        super(texture, x, y, 0);
+
+        this.zIndex = 0;
     }
 }
 

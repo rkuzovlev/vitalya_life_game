@@ -2,44 +2,44 @@ import * as PIXI from "pixi.js";
 
 import { cellDimension } from "../config";
 
-export default class BaseObject {
-    constructor(spriteImage, x, y, zIndex = 0){
-        this.sprite = PIXI.Sprite.from(spriteImage);
-        this.sprite.anchor.set(0.5);
-        this.sprite.x = x * cellDimension + cellDimension / 2;
-        this.sprite.y = y * cellDimension + cellDimension / 2;
-        this.sprite.zIndex = zIndex;
+export default class BaseObject extends PIXI.Sprite {
+    constructor(texture, x, y){
+        super(texture);
+
+        this.anchor.set(0.5);
+        this.x = x * cellDimension + cellDimension / 2;
+        this.y = y * cellDimension + cellDimension / 2;
     }
 
     moveUp(){
-        this.sprite.y -= cellDimension;
+        this.y -= cellDimension;
     }
 
     moveDown(){
-        this.sprite.y += cellDimension;
+        this.y += cellDimension;
     }
 
     moveLeft(){
-        this.sprite.x -= cellDimension;
+        this.x -= cellDimension;
     }
 
     moveRight(){
-        this.sprite.x += cellDimension;
+        this.x += cellDimension;
     }
 
     turnUp(){
-        this.sprite.angle = 0;
+        this.angle = 0;
     }
 
     turnDown(){
-        this.sprite.angle = 180;
+        this.angle = 180;
     }
 
     turnLeft(){
-        this.sprite.angle = -90;
+        this.angle = -90;
     }
 
     turnRight(){
-        this.sprite.angle = 90;
+        this.angle = 90;
     }
 }
