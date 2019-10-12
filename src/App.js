@@ -5,6 +5,8 @@ import { cellDimension, columnsCount, rowsCount } from "./config";
 import Road from "./road";
 import Hero from "./hero";
 import Wall from "./wall";
+import Mark from "./mark";
+import Rabbit from "./rabbit";
 
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";
@@ -12,6 +14,13 @@ import level2 from "./levels/level2";
 const levels = {
     1: level1,
     2: level2,
+};
+
+const levelObjectMapping = {
+    1: Wall,
+    2: Hero,
+    3: Mark,
+    4: Rabbit,
 };
 
 export default class App {
@@ -51,6 +60,10 @@ export default class App {
         this.levelObjects.push(object);
         this.pixiApp.stage.addChild(object.sprite);
 
+        if (Obj === Hero){
+            this.hero = object;
+        }
+
         return object;
     }
 
@@ -63,14 +76,10 @@ export default class App {
 
         for (let x = 0; x < columnsCount; x++){
             for (let y = 0; y < rowsCount; y++){
-                const levelObject = level[y][x];
+                const levelObject = levelObjectMapping[level[y][x]];
 
-                if (levelObject === 1){
-                    this._instantiate(Wall, x, y);
-
-                } else if (levelObject === 2){
-                    this.hero = this._instantiate(Hero, x, y);
-
+                if (levelObject){
+                    this._instantiate(levelObject, x, y);
                 }
             }
         }

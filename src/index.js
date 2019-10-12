@@ -5,4 +5,4 @@ import App from './App';
 const app = new App();
 app.render("root");
 
-app.loadLevel(1);
+app.loadLevel(2);
