@@ -35,11 +35,12 @@ export default class App {
             height: cellDimension * rowsCount,
         });
 
-        document.addEventListener('keydown', this.onKeyDown);
+        this.pixiApp.stage.sortableChildren = true;
 
         const road = new Road(this.pixiApp);
-
         this.pixiApp.stage.addChild(road.sprite);
+
+        document.addEventListener('keydown', this.onKeyDown);
     }
 
     render(domId){

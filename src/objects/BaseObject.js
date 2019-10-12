@@ -3,11 +3,12 @@ import * as PIXI from "pixi.js";
 import { cellDimension } from "../config";
 
 export default class BaseObject {
-    constructor(spriteImage, x, y){
+    constructor(spriteImage, x, y, zIndex = 0){
         this.sprite = PIXI.Sprite.from(spriteImage);
         this.sprite.anchor.set(0.5);
         this.sprite.x = x * cellDimension + cellDimension / 2;
         this.sprite.y = y * cellDimension + cellDimension / 2;
+        this.sprite.zIndex = zIndex;
     }
 
     moveUp(){
