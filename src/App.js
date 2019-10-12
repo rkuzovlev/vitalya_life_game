@@ -38,6 +38,7 @@ export default class App {
         this.levelObjects.forEach(object => {
             this.pixiApp.stage.removeChild(object.sprite);
         });
+        this.levelObjects = [];
         this.hero = null;
     }
 
