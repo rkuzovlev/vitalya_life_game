@@ -1,10 +1,10 @@
 import * as PIXI from "pixi.js";
 
-import BaseObject from "../BaseObject";
+import MovableObject from "../MovableObject";
 
 import heroImage from './hero.png';
 
-class Hero extends BaseObject {
+class Hero extends MovableObject {
     constructor(x, y) {
         const texture = PIXI.Texture.from(heroImage);
         super(texture, x, y);
