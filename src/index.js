@@ -1,9 +1,7 @@
 import './style.scss';
 
+import WelcomeScene from "./scenes/WelcomeScene";
 import App from './App';
 
 const app = new App("root");
-
-app.loadLevel(1);
-
-window.app = app;
+app.loadScene(WelcomeScene);

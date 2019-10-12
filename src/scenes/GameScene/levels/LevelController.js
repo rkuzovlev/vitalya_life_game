@@ -1,4 +1,4 @@
-import { columnsCount, rowsCount } from "../config";
+import { columnsCount, rowsCount } from "../../../config";
 
 import MovableObject from "../objects/MovableObject";
 

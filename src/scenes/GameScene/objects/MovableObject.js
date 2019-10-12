@@ -1,6 +1,6 @@
 import BaseObject from "./BaseObject";
 
-import { cellDimension } from "../config";
+import { cellDimension } from "../../../config";
 
 export default class MovableObject extends BaseObject {
     moveUp(){

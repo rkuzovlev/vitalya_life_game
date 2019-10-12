@@ -2,21 +2,10 @@ import * as PIXI from "pixi.js";
 
 import { cellDimension, columnsCount, rowsCount } from "./config";
 
-import Road from "./road";
-
-import LevelController, { DIRECTIONS } from './levels/LevelController';
-
-import level1 from "./levels/level1";
-import level2 from "./levels/level2";
-
-const LEVELS = {
-    1: level1,
-    2: level2,
-};
+// import WelcomeScene from "./scenes/WelcomeScene";
 
 export default class App extends PIXI.Application {
-    currentLevelNumber = 0;
-    levelController;
+    currentScene = null;
 
     constructor(domId){
         const config = {
@@ -28,44 +17,22 @@ export default class App extends PIXI.Application {
 
         this.stage.sortableChildren = true;
 
-        const road = new Road(this);
-        this.stage.addChild(road);
-
-        this.levelController = new LevelController(this);
-
         document.addEventListener('keydown', this.onKeyDown);
         document.getElementById(domId).appendChild(this.view);
     }
 
-    loadLevel(levelNumber){
-        this.currentLevelNumber = levelNumber;
+    loadScene(Scene){
+        if (this.currentScene){
+            this.currentScene.unload();
+        }
 
-        this.levelController.loadLevel(LEVELS[levelNumber]);
+        this.currentScene = new Scene(this);
+        this.currentScene.load()
     }
 
     onKeyDown = event => {
-        if (event.key === "ArrowUp"){
-            this.levelController.checkMovement(DIRECTIONS.UP);
-
-        } else if (event.key === "ArrowDown"){
-            this.levelController.checkMovement(DIRECTIONS.DOWN);
-
-        } else if (event.key === "ArrowLeft"){
-            this.levelController.checkMovement(DIRECTIONS.LEFT);
-
-        } else if (event.key === "ArrowRight"){
-            this.levelController.checkMovement(DIRECTIONS.RIGHT);
-
-        }
-
-        if (this.levelController.isLevelCompleted()){
-            const nextLevel = this.currentLevelNumber + 1;
-
-            if (LEVELS[nextLevel]){
-                this.loadLevel(nextLevel);
-            } else {
-                console.log('You won!!!!');
-            }
+        if (this.currentScene.onKeyDown){
+            this.currentScene.onKeyDown(event);
         }
     }
 }

@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-import { cellDimension } from "../config";
+import { cellDimension } from "../../../config";
 
 export default class BaseObject extends PIXI.Sprite {
     constructor(texture, x, y){
