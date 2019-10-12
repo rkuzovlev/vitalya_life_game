@@ -11,6 +11,19 @@ export default class BaseObject extends PIXI.Sprite {
         this.y = y * cellDimension + cellDimension / 2;
     }
 
+    isPosition(x, y){
+        const pos = this.getPositions();
+
+        return x === pos.x && y === pos.y;
+    }
+
+    getPositions(){
+        return {
+            x: (this.x - cellDimension / 2) / cellDimension,
+            y: (this.y - cellDimension / 2) / cellDimension,
+        }
+    }
+
     moveUp(){
         this.y -= cellDimension;
     }

@@ -22,41 +22,24 @@ export const DIRECTIONS = {
 class LevelController {
     levelObjects = [];
     app = null;
-    hero = null;
 
     constructor(app) {
         this.app = app;
     }
 
     _clearLevel(){
-        this.levelObjects.forEach(row => {
-            row.forEach(object => {
-                this.app.stage.removeChild(object);
-            });
+        this.levelObjects.forEach(object => {
+            this.app.stage.removeChild(object);
         });
 
         this.levelObjects = [];
-        for (let y = 0; y < rowsCount; y++){
-            this.levelObjects[y] = [];
-            for (let x = 0; x < columnsCount; x++){
-                this.levelObjects[y][x] = null;
-            }
-        }
-
-        this.hero = null;
     }
 
     _instantiate(Obj, x, y){
         const object = new Obj(x, y);
 
-        this.levelObjects[y][x] = object;
+        this.levelObjects.push(object);
         this.app.stage.addChild(object);
-
-        if (Obj === Hero){
-            this.hero = object;
-        }
-
-        return object;
     }
 
     loadLevel(level){
@@ -73,22 +56,54 @@ class LevelController {
         }
     }
 
+    _findByObject(Obj){
+        return this.levelObjects.find(object => object instanceof Obj);
+    }
+
+    _findByPos(x, y){
+        return this.levelObjects.find(object => object.isPosition(x, y));
+    }
+
     checkMovement(direction){
+        const hero = this._findByObject(Hero);
+
+        if (!hero){
+            return;
+        }
+
+        const heroPositions = hero.getPositions();
+
         if (direction === DIRECTIONS.UP){
-            this.hero.moveUp();
-            this.hero.turnUp()
+            const nearbyObject = this._findByPos(heroPositions.x, heroPositions.y - 1);
+            if (!nearbyObject || nearbyObject instanceof Mark){
+                hero.moveUp();
+            }
+
+            hero.turnUp()
 
         } else if (direction === DIRECTIONS.DOWN){
-            this.hero.moveDown();
-            this.hero.turnDown()
+            const nearbyObject = this._findByPos(heroPositions.x, heroPositions.y + 1);
+            if (!nearbyObject || nearbyObject instanceof Mark){
+                hero.moveDown();
+            }
+
+            hero.turnDown()
 
         } else if (direction === DIRECTIONS.LEFT){
-            this.hero.moveLeft();
-            this.hero.turnLeft()
+            const nearbyObject = this._findByPos(heroPositions.x - 1, heroPositions.y);
+            if (!nearbyObject || nearbyObject instanceof Mark){
+                hero.moveLeft();
+            }
+
+            hero.turnLeft();
 
         } else if (direction === DIRECTIONS.RIGHT){
-            this.hero.moveRight();
-            this.hero.turnRight()
+            const nearbyObject = this._findByPos(heroPositions.x + 1, heroPositions.y);
+            if (!nearbyObject || nearbyObject instanceof Mark){
+                hero.moveRight();
+            }
+
+            hero.turnRight();
 
         }
     }

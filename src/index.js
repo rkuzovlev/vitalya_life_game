@@ -5,3 +5,5 @@ import App from './App';
 const app = new App("root");
 
 app.loadLevel(2);
+
+window.app = app;
