@@ -85,7 +85,7 @@ export default class GameScene extends BaseScene {
     }
 
     onKeyDown = event => {
-        if (event.key === "r" || event.key === "R"){
+        if (event.key === "r" || event.key === "R" || event.key === "к" || event.key === "К"){
             return this.reloadLevel();
         }
 

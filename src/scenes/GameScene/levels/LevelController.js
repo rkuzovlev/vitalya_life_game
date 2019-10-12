@@ -5,13 +5,13 @@ import MovableObject from "../objects/MovableObject";
 import Wall from "../objects/wall";
 import Hero from "../objects/hero";
 import Mark from "../objects/mark";
-import Rabbit from "../objects/rabbit";
+import Movable from "../objects/movable";
 
 const LEVEL_OBJECT_MAPPING = {
     1: Wall,
     2: Hero,
     3: Mark,
-    4: Rabbit,
+    4: Movable,
 };
 
 export const DIRECTIONS = {
