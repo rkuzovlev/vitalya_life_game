@@ -1,8 +1,8 @@
-import Cell from '../Cell';
+import BaseObject from '../BaseObject';
 
 import markImage from './mark.png';
 
-class Mark extends Cell {
+class Mark extends BaseObject {
     constructor(x, y) {
         super(markImage, x, y);
     }

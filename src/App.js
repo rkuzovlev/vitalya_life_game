@@ -3,10 +3,10 @@ import * as PIXI from "pixi.js";
 import { cellDimension, columnsCount, rowsCount } from "./config";
 
 import Road from "./road";
-import Hero from "./hero";
-import Wall from "./wall";
-import Mark from "./mark";
-import Rabbit from "./rabbit";
+import Hero from "./objects/hero";
+import Wall from "./objects/wall";
+import Mark from "./objects/mark";
+import Rabbit from "./objects/rabbit";
 
 import level1 from "./levels/level1";
 import level2 from "./levels/level2";

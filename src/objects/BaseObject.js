@@ -1,8 +1,8 @@
 import * as PIXI from "pixi.js";
 
-import { cellDimension } from "./config";
+import { cellDimension } from "../config";
 
-export default class Cell {
+export default class BaseObject {
     constructor(spriteImage, x, y){
         this.sprite = PIXI.Sprite.from(spriteImage);
         this.sprite.anchor.set(0.5);

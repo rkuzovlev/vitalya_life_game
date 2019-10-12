@@ -1,8 +1,8 @@
-import Cell from "../Cell";
+import BaseObject from "../BaseObject";
 
 import heroImage from './hero.png';
 
-class Hero extends Cell {
+class Hero extends BaseObject {
     constructor(x, y) {
         super(heroImage, x, y);
     }

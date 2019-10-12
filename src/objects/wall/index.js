@@ -1,8 +1,8 @@
-import Cell from '../Cell';
+import BaseObject from '../BaseObject';
 
 import wallImage from './wall.png';
 
-class Wall extends Cell {
+class Wall extends BaseObject {
     constructor(x, y) {
         super(wallImage, x, y);
     }
