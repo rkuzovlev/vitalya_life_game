@@ -133,7 +133,7 @@
     ]
   },
   "dependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "pixi.js": "^5.1.5",
     "reset-css": "^4.0.1"
   }
